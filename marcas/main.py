@@ -6,7 +6,18 @@ Module documentation.
 # Imports
 import sys
 
-from app import models
+from app import models, managers
+
+
+def test():
+    person_id = managers.Persons().create('Gabriel', 'Fernández', '30592463').id
+    obj_pos = managers.Positions().create('POITE', person_id)
+
+    print('Position: ')
+    print(obj_pos.id)
+    print(obj_pos.name)
+    # print(obj_pos.person.id_card)
+    print(obj_pos.timestamp)
 
 
 def main():
@@ -17,6 +28,7 @@ def main():
         # sys.exit(1)
 
     models.DataBase.create_it()
+    test()
 
 
 # Main body
